@@ -21,6 +21,7 @@ export default {
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
 				mono: ['JetBrains Mono', 'monospace'],
+				orbitron: ["'Orbitron'", 'Montserrat', 'ui-sans-serif', 'system-ui'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -74,7 +75,14 @@ export default {
 					DEFAULT: 'hsl(var(--warning))',
 					foreground: 'hsl(var(--warning-foreground))'
 				},
-				'neon-pink': 'hsl(var(--neon-pink))'
+				'neon-pink': 'hsl(var(--neon-pink))',
+				darkBg: '#181A20',
+				glass: 'rgba(24,26,32,0.7)',
+				neonBlue: '#00F0FF',
+				neonPink: '#FF00E6',
+				neonPurple: '#A259FF',
+				neonGreen: '#00FFB2',
+				accent: '#FFB800',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -102,7 +110,14 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+			},
+			boxShadow: {
+				glass: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+				neon: '0 0 8px #00F0FF, 0 0 16px #A259FF',
+			},
+			backdropBlur: {
+				glass: '8px',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

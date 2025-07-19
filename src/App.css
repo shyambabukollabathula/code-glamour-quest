@@ -1,8 +1,32 @@
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #181A20 0%, #232946 100%);
+  font-family: 'Orbitron', 'Montserrat', ui-sans-serif, system-ui;
+  color: #fff;
+  overflow-x: hidden;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(24,26,32,0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  border-radius: 32px;
+  margin: 2rem auto;
   padding: 2rem;
-  text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #232946;
+}
+::-webkit-scrollbar-thumb {
+  background: #A259FF;
+  border-radius: 8px;
 }
 
 .logo {

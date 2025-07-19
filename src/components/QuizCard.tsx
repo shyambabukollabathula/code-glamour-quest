@@ -47,126 +47,131 @@ const QuizCard = ({ question, onAnswer, showResult, userAnswer, isCorrect }: Qui
   };
 
   return (
-    <Card className="bg-background/80 backdrop-blur-md border-primary/20 border-2 hover:border-primary/40 transition-all duration-300 p-6 space-y-6 shadow-xl hover:shadow-2xl">
-      {/* Header */}
-      <div className="flex items-center justify-between flex-wrap gap-2">
-        <div className="flex items-center gap-2">
-          {getCategoryIcon()}
-          <Badge variant="outline" className="bg-background/50 border-primary/30">
-            {question.category}
+    <div
+      className="bg-glass backdrop-blur-glass shadow-glass border-2 border-neonPurple rounded-3xl p-8 mb-6 transition-transform hover:scale-105 hover:shadow-neon text-white font-futuristic relative overflow-hidden"
+    >
+      <div className="absolute inset-0 pointer-events-none z-0" style={{background: 'linear-gradient(120deg, rgba(162,89,255,0.15) 0%, rgba(0,240,255,0.10) 100%)'}} />
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <div className="flex items-center gap-2">
+            {getCategoryIcon()}
+            <Badge variant="outline" className="bg-background/50 border-primary/30">
+              {question.category}
+            </Badge>
+          </div>
+          <Badge className={getDifficultyColor()}>
+            {question.difficulty}
           </Badge>
         </div>
-        <Badge className={getDifficultyColor()}>
-          {question.difficulty}
-        </Badge>
-      </div>
 
-      {/* Question */}
-      <div className="space-y-4">
-        <h3 className="text-xl font-semibold gradient-text leading-relaxed">
-          {question.question}
-        </h3>
+        {/* Question */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold gradient-text leading-relaxed">
+            {question.question}
+          </h3>
 
-        {/* Answer Interface */}
-        {question.type === 'multiple-choice' || question.type === 'puzzle' ? (
-          <div className="space-y-3">
-            {question.options?.map((option, index) => (
-              <Button
-                key={index}
-                variant={showResult 
-                  ? option === question.correctAnswer
+          {/* Answer Interface */}
+          {question.type === 'multiple-choice' || question.type === 'puzzle' ? (
+            <div className="space-y-3">
+              {question.options?.map((option, index) => (
+                <Button
+                  key={index}
+                  variant={showResult 
+                    ? option === question.correctAnswer
+                      ? "default"
+                      : option === userAnswer && !isCorrect
+                      ? "destructive"
+                      : "outline"
+                    : selectedAnswer === option
                     ? "default"
-                    : option === userAnswer && !isCorrect
-                    ? "destructive"
                     : "outline"
-                  : selectedAnswer === option
-                  ? "default"
-                  : "outline"
-                }
-                className={`w-full text-left justify-start p-4 h-auto transition-all duration-200 ${
-                  !showResult ? 'hover:scale-[1.02] hover:shadow-lg' : ''
-                } ${showResult && option === question.correctAnswer ? 'shadow-primary/50 shadow-lg' : ''}`}
-                onClick={() => !showResult && setSelectedAnswer(option)}
-                disabled={showResult}
-              >
-                <span className="font-mono mr-2">
-                  {String.fromCharCode(65 + index)}.
-                </span>
-                {option}
-                {showResult && option === question.correctAnswer && (
-                  <CheckCircle className="w-5 h-5 ml-auto text-success" />
-                )}
-                {showResult && option === userAnswer && !isCorrect && (
-                  <XCircle className="w-5 h-5 ml-auto text-destructive" />
-                )}
-              </Button>
-            ))}
-          </div>
-        ) : (
-          <div className="space-y-4">
-            <Textarea
-              value={codeInput}
-              onChange={(e) => setCodeInput(e.target.value)}
-              placeholder="Write your code here..."
-              className="bg-background/50 border-primary/30 font-mono min-h-[200px] text-sm"
-              disabled={showResult}
-            />
-            {question.testCases && (
-              <div className="space-y-2">
-                <h4 className="text-sm font-medium text-muted-foreground">Test Cases:</h4>
-                {question.testCases.map((test, index) => (
-                  <div key={index} className="bg-background/30 p-3 rounded-lg text-sm font-mono border border-border/50">
-                    <div className="text-accent">Input: {test.input}</div>
-                    <div className="text-primary">Expected: {test.expectedOutput}</div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Submit Button */}
-        {!showResult && (
-          <Button
-            onClick={handleSubmit}
-            disabled={question.type === 'code-input' ? !codeInput.trim() : !selectedAnswer}
-            className="w-full font-semibold py-3 shadow-lg hover:shadow-primary/50"
-            size="lg"
-          >
-            Submit Answer
-          </Button>
-        )}
-
-        {/* Result and Explanation */}
-        {showResult && (
-          <div className={`bg-background/60 backdrop-blur-sm p-4 rounded-lg border-l-4 ${
-            isCorrect ? 'border-l-green-500' : 'border-l-red-500'
-          }`}>
-            <div className="flex items-center gap-2 mb-2">
-              {isCorrect ? (
-                <CheckCircle className="w-5 h-5 text-success" />
-              ) : (
-                <XCircle className="w-5 h-5 text-destructive" />
-              )}
-              <span className="font-semibold">
-                {isCorrect ? 'Correct!' : 'Incorrect'}
-              </span>
+                  }
+                  className={`w-full text-left justify-start p-4 h-auto transition-all duration-200 ${
+                    !showResult ? 'hover:scale-[1.02] hover:shadow-lg' : ''
+                  } ${showResult && option === question.correctAnswer ? 'shadow-primary/50 shadow-lg' : ''}`}
+                  onClick={() => !showResult && setSelectedAnswer(option)}
+                  disabled={showResult}
+                >
+                  <span className="font-mono mr-2">
+                    {String.fromCharCode(65 + index)}.
+                  </span>
+                  {option}
+                  {showResult && option === question.correctAnswer && (
+                    <CheckCircle className="w-5 h-5 ml-auto text-success" />
+                  )}
+                  {showResult && option === userAnswer && !isCorrect && (
+                    <XCircle className="w-5 h-5 ml-auto text-destructive" />
+                  )}
+                </Button>
+              ))}
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {question.explanation}
-            </p>
-            {question.type === 'code-input' && (
-              <div className="mt-3 pt-3 border-t border-border">
-                <h5 className="text-sm font-medium mb-2">Correct Solution:</h5>
-                <pre className="bg-background/30 p-3 rounded text-xs font-mono overflow-x-auto border border-border/50">
-                  {question.correctAnswer}
-                </pre>
+          ) : (
+            <div className="space-y-4">
+              <Textarea
+                value={codeInput}
+                onChange={(e) => setCodeInput(e.target.value)}
+                placeholder="Write your code here..."
+                className="bg-background/50 border-primary/30 font-mono min-h-[200px] text-sm"
+                disabled={showResult}
+              />
+              {question.testCases && (
+                <div className="space-y-2">
+                  <h4 className="text-sm font-medium text-muted-foreground">Test Cases:</h4>
+                  {question.testCases.map((test, index) => (
+                    <div key={index} className="bg-background/30 p-3 rounded-lg text-sm font-mono border border-border/50">
+                      <div className="text-accent">Input: {test.input}</div>
+                      <div className="text-primary">Expected: {test.expectedOutput}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Submit Button */}
+          {!showResult && (
+            <Button
+              onClick={handleSubmit}
+              disabled={question.type === 'code-input' ? !codeInput.trim() : !selectedAnswer}
+              className="w-full font-semibold py-3 shadow-lg hover:shadow-primary/50"
+              size="lg"
+            >
+              Submit Answer
+            </Button>
+          )}
+
+          {/* Result and Explanation */}
+          {showResult && (
+            <div className={`bg-background/60 backdrop-blur-sm p-4 rounded-lg border-l-4 ${
+              isCorrect ? 'border-l-green-500' : 'border-l-red-500'
+            }`}>
+              <div className="flex items-center gap-2 mb-2">
+                {isCorrect ? (
+                  <CheckCircle className="w-5 h-5 text-success" />
+                ) : (
+                  <XCircle className="w-5 h-5 text-destructive" />
+                )}
+                <span className="font-semibold">
+                  {isCorrect ? 'Correct!' : 'Incorrect'}
+                </span>
               </div>
-            )}
-          </div>
-        )}
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {question.explanation}
+              </p>
+              {question.type === 'code-input' && (
+                <div className="mt-3 pt-3 border-t border-border">
+                  <h5 className="text-sm font-medium mb-2">Correct Solution:</h5>
+                  <pre className="bg-background/30 p-3 rounded text-xs font-mono overflow-x-auto border border-border/50">
+                    {question.correctAnswer}
+                  </pre>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
-    </Card>
+    </div>
   );
 };
 
