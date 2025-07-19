@@ -47,12 +47,12 @@ const QuizCard = ({ question, onAnswer, showResult, userAnswer, isCorrect }: Qui
   };
 
   return (
-    <Card className="glass-strong neon-border interactive-hover p-6 space-y-6 float">
+    <Card className="bg-background/80 backdrop-blur-md border-primary/20 border-2 hover:border-primary/40 transition-all duration-300 p-6 space-y-6 shadow-xl hover:shadow-2xl">
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-2">
         <div className="flex items-center gap-2">
           {getCategoryIcon()}
-          <Badge variant="outline" className="glass border-primary/30">
+          <Badge variant="outline" className="bg-background/50 border-primary/30">
             {question.category}
           </Badge>
         </div>
@@ -83,9 +83,9 @@ const QuizCard = ({ question, onAnswer, showResult, userAnswer, isCorrect }: Qui
                   ? "default"
                   : "outline"
                 }
-                className={`w-full text-left justify-start p-4 h-auto ${
-                  !showResult ? 'interactive-hover' : ''
-                } ${showResult && option === question.correctAnswer ? 'glow-primary' : ''}`}
+                className={`w-full text-left justify-start p-4 h-auto transition-all duration-200 ${
+                  !showResult ? 'hover:scale-[1.02] hover:shadow-lg' : ''
+                } ${showResult && option === question.correctAnswer ? 'shadow-primary/50 shadow-lg' : ''}`}
                 onClick={() => !showResult && setSelectedAnswer(option)}
                 disabled={showResult}
               >
@@ -108,14 +108,14 @@ const QuizCard = ({ question, onAnswer, showResult, userAnswer, isCorrect }: Qui
               value={codeInput}
               onChange={(e) => setCodeInput(e.target.value)}
               placeholder="Write your code here..."
-              className="glass border-primary/30 font-mono min-h-[200px] text-sm"
+              className="bg-background/50 border-primary/30 font-mono min-h-[200px] text-sm"
               disabled={showResult}
             />
             {question.testCases && (
               <div className="space-y-2">
                 <h4 className="text-sm font-medium text-muted-foreground">Test Cases:</h4>
                 {question.testCases.map((test, index) => (
-                  <div key={index} className="glass p-3 rounded-lg text-sm font-mono">
+                  <div key={index} className="bg-background/30 p-3 rounded-lg text-sm font-mono border border-border/50">
                     <div className="text-accent">Input: {test.input}</div>
                     <div className="text-primary">Expected: {test.expectedOutput}</div>
                   </div>
@@ -130,7 +130,7 @@ const QuizCard = ({ question, onAnswer, showResult, userAnswer, isCorrect }: Qui
           <Button
             onClick={handleSubmit}
             disabled={question.type === 'code-input' ? !codeInput.trim() : !selectedAnswer}
-            className="w-full glow-primary font-semibold py-3"
+            className="w-full font-semibold py-3 shadow-lg hover:shadow-primary/50"
             size="lg"
           >
             Submit Answer
@@ -139,8 +139,8 @@ const QuizCard = ({ question, onAnswer, showResult, userAnswer, isCorrect }: Qui
 
         {/* Result and Explanation */}
         {showResult && (
-          <div className={`glass-strong p-4 rounded-lg border-l-4 ${
-            isCorrect ? 'border-l-success' : 'border-l-destructive'
+          <div className={`bg-background/60 backdrop-blur-sm p-4 rounded-lg border-l-4 ${
+            isCorrect ? 'border-l-green-500' : 'border-l-red-500'
           }`}>
             <div className="flex items-center gap-2 mb-2">
               {isCorrect ? (
@@ -158,7 +158,7 @@ const QuizCard = ({ question, onAnswer, showResult, userAnswer, isCorrect }: Qui
             {question.type === 'code-input' && (
               <div className="mt-3 pt-3 border-t border-border">
                 <h5 className="text-sm font-medium mb-2">Correct Solution:</h5>
-                <pre className="glass p-3 rounded text-xs font-mono overflow-x-auto">
+                <pre className="bg-background/30 p-3 rounded text-xs font-mono overflow-x-auto border border-border/50">
                   {question.correctAnswer}
                 </pre>
               </div>
