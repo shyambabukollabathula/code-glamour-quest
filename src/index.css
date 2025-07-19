@@ -1,96 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Futuristic Quiz App Design System - Glassmorphism & Neon Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
+    /* Dark space background */
+    --background: 225 30% 7%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    /* Glassmorphism cards */
+    --card: 225 30% 12%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    /* Popovers with glass effect */
+    --popover: 225 30% 10%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Primary neon purple */
+    --primary: 270 100% 70%;
+    --primary-foreground: 225 30% 7%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    /* Secondary glass effect */
+    --secondary: 225 30% 15%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    /* Muted elements */
+    --muted: 225 30% 20%;
+    --muted-foreground: 220 20% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    /* Accent neon cyan */
+    --accent: 180 100% 70%;
+    --accent-foreground: 225 30% 7%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive neon red */
+    --destructive: 0 100% 70%;
+    --destructive-foreground: 225 30% 7%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Borders with glass effect */
+    --border: 225 30% 25%;
+    --input: 225 30% 18%;
+    --ring: 270 100% 70%;
+
+    /* Success neon green */
+    --success: 120 100% 70%;
+    --success-foreground: 225 30% 7%;
+
+    /* Warning neon orange */
+    --warning: 30 100% 70%;
+    --warning-foreground: 225 30% 7%;
+
+    /* Neon pink for special effects */
+    --neon-pink: 320 100% 70%;
+    
+    /* Glass morphism variables */
+    --glass-bg: 225 30% 15% / 0.3;
+    --glass-border: 225 30% 35% / 0.2;
+    
+    /* Gradient backgrounds */
+    --gradient-primary: linear-gradient(135deg, hsl(270 100% 70% / 0.3), hsl(180 100% 70% / 0.3));
+    --gradient-secondary: linear-gradient(135deg, hsl(320 100% 70% / 0.2), hsl(270 100% 70% / 0.2));
+    --gradient-mesh: radial-gradient(circle at 20% 80%, hsl(270 100% 70% / 0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, hsl(180 100% 70% / 0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 40% 40%, hsl(320 100% 70% / 0.1) 0%, transparent 50%);
+
+    /* Shadows and glows */
+    --shadow-neon: 0 0 20px hsl(270 100% 70% / 0.5);
+    --shadow-glass: 0 8px 32px hsl(225 30% 7% / 0.3);
+    --glow-primary: 0 0 40px hsl(270 100% 70% / 0.6);
+    --glow-accent: 0 0 40px hsl(180 100% 70% / 0.6);
+
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-['Inter'];
+    background-image: var(--gradient-mesh);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/20;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
+    border-radius: 4px;
+  }
+
+  /* Font families */
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Glass morphism effect */
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* Enhanced glass with stronger effect */
+  .glass-strong {
+    background: hsl(225 30% 15% / 0.6);
+    backdrop-filter: blur(30px) saturate(200%);
+    border: 1px solid hsl(225 30% 40% / 0.4);
+    box-shadow: var(--shadow-glass), inset 0 1px 0 hsl(225 30% 50% / 0.2);
+  }
+
+  /* Neon glow effects */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: -2s;
+  }
+
+  /* Interactive hover effects */
+  .interactive-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .interactive-hover:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-glass), var(--glow-primary);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Neon border animation */
+  .neon-border {
+    position: relative;
+  }
+
+  .neon-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--neon-pink)));
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: neon-pulse 2s ease-in-out infinite;
+  }
+
+  /* Pulse effect for correct answers */
+  .pulse-success {
+    animation: pulse-success 0.6s ease-out;
+  }
+
+  /* Shake effect for wrong answers */
+  .shake-error {
+    animation: shake-error 0.5s ease-in-out;
+  }
+}
+
+@layer utilities {
+  /* Keyframe animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes neon-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes pulse-success {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); box-shadow: var(--glow-primary); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes shake-error {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+
+  @keyframes particle-float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* Background particle effects */
+  .particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: hsl(var(--primary));
+    border-radius: 50%;
+    animation: particle-float linear infinite;
   }
 }
 
