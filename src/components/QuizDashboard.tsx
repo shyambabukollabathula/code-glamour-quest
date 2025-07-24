@@ -166,45 +166,48 @@ const QuizDashboard = ({ stats, onStartQuiz, onResetStats }: QuizDashboardProps)
 
       {/* Quiz Types */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="glass-strong p-6 interactive-hover cursor-pointer"
+        {/* Programming Box - Blue */}
+        <Card className="glass-strong p-6 interactive-hover cursor-pointer border-2 border-blue-500 bg-blue-950/60"
               onClick={() => onStartQuiz('programming')}>
           <div className="text-center space-y-4">
-            <div className="w-16 h-16 mx-auto bg-primary/20 rounded-full flex items-center justify-center">
-              <Code className="w-8 h-8 text-primary" />
+            <div className="w-16 h-16 mx-auto bg-blue-600/30 rounded-full flex items-center justify-center">
+              <Code className="w-8 h-8 text-blue-400" />
             </div>
-            <h3 className="text-xl font-semibold">Programming</h3>
-            <p className="text-muted-foreground">
+            <h3 className="text-xl font-semibold text-blue-300">Programming</h3>
+            <p className="text-blue-200">
               Test your coding skills with algorithm and syntax challenges
             </p>
-            <Button className="w-full glow-primary">Start Coding</Button>
+            <Button className="w-full bg-blue-500 text-white hover:bg-blue-600">Start Coding</Button>
           </div>
         </Card>
 
-        <Card className="glass-strong p-6 interactive-hover cursor-pointer"
+        {/* Brain Puzzles Box - Purple */}
+        <Card className="glass-strong p-6 interactive-hover cursor-pointer border-2 border-purple-500 bg-purple-950/60"
               onClick={() => onStartQuiz('puzzles')}>
           <div className="text-center space-y-4">
-            <div className="w-16 h-16 mx-auto bg-accent/20 rounded-full flex items-center justify-center">
-              <Brain className="w-8 h-8 text-accent" />
+            <div className="w-16 h-16 mx-auto bg-purple-600/30 rounded-full flex items-center justify-center">
+              <Brain className="w-8 h-8 text-purple-400" />
             </div>
-            <h3 className="text-xl font-semibold">Brain Puzzles</h3>
-            <p className="text-muted-foreground">
+            <h3 className="text-xl font-semibold text-purple-300">Brain Puzzles</h3>
+            <p className="text-purple-200">
               Sharpen your logical thinking with mind-bending puzzles
             </p>
-            <Button className="w-full glow-primary">Start Puzzles</Button>
+            <Button className="w-full bg-purple-500 text-white hover:bg-purple-600">Start Puzzles</Button>
           </div>
         </Card>
 
-        <Card className="glass-strong p-6 interactive-hover cursor-pointer"
+        {/* Mixed Challenge Box - Pink */}
+        <Card className="glass-strong p-6 interactive-hover cursor-pointer border-2 border-pink-500 bg-pink-950/60"
               onClick={() => onStartQuiz('mixed')}>
           <div className="text-center space-y-4">
-            <div className="w-16 h-16 mx-auto bg-warning/20 rounded-full flex items-center justify-center">
-              <Trophy className="w-8 h-8 text-warning" />
+            <div className="w-16 h-16 mx-auto bg-pink-600/30 rounded-full flex items-center justify-center">
+              <Trophy className="w-8 h-8 text-pink-400" />
             </div>
-            <h3 className="text-xl font-semibold">Mixed Challenge</h3>
-            <p className="text-muted-foreground">
+            <h3 className="text-xl font-semibold text-pink-300">Mixed Challenge</h3>
+            <p className="text-pink-200">
               Ultimate test with programming, logic, and aptitude questions
             </p>
-            <Button className="w-full glow-primary">Start Challenge</Button>
+            <Button className="w-full bg-pink-500 text-white hover:bg-pink-600">Start Challenge</Button>
           </div>
         </Card>
       </div>
