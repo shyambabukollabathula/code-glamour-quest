@@ -190,7 +190,7 @@ const QuizDashboard = ({ stats, onStartQuiz, onResetStats }: QuizDashboardProps)
             <p className="text-muted-foreground">
               Sharpen your logical thinking with mind-bending puzzles
             </p>
-            <Button variant="outline" className="w-full">Start Puzzles</Button>
+            <Button className="w-full glow-primary">Start Puzzles</Button>
           </div>
         </Card>
 
@@ -204,7 +204,7 @@ const QuizDashboard = ({ stats, onStartQuiz, onResetStats }: QuizDashboardProps)
             <p className="text-muted-foreground">
               Ultimate test with programming, logic, and aptitude questions
             </p>
-            <Button variant="outline" className="w-full">Start Challenge</Button>
+            <Button className="w-full glow-primary">Start Challenge</Button>
           </div>
         </Card>
       </div>
